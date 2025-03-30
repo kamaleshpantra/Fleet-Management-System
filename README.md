@@ -36,7 +36,7 @@ This project implements a fleet management system for multi-robots, as part of t
         * Sample 3: https://gist.github.com/naveenrobo/0ca9f31f9748eea0f795c8b46e6d140a
 6.  **Run the application:**
     ```bash
-    python src/main.py
+    python main.py
     ```
 
 ## GUI Usage
