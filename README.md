@@ -54,9 +54,15 @@ This project implements a fleet management system for multi-robots, as part of t
 5.  **Logging:**
     * Robot actions and events are logged to `logs/fleet_logs.txt`.
 
-## Screenshots
+## 🌟 Key Features
 
-* *(Insert screenshots here to demonstrate the GUI and its features)*
+| Feature | Description | Visual |
+|---------|-------------|--------|
+| **Interactive Environment** | Intuitive GUI with clickable vertices and lanes | ![Interactive GUI](screenshots/gui_interaction.png) |
+| **Dynamic Robot Spawning** | Create robots with single click at any vertex | ![Robot Spawning](screenshots/robot_spawn.png) |
+| **Smart Task Assignment** | Visual task assignment with path planning | ![Task Assignment](screenshots/task_assignment.png) |
+| **Traffic Negotiation** | Automatic collision avoidance and queuing | ![Traffic Control](screenshots/traffic_control.png) |
+| **Real-time Monitoring** | Comprehensive logging and status tracking | ![Logging](screenshots/activity_log.png) |
 
 ## Design Choices
 
