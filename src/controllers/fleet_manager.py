@@ -2,6 +2,7 @@ from typing import Dict
 from src.models.robot import Robot, RobotStatus
 from src.models.nav_graph import NavGraph
 from src.controllers.traffic_manager import TrafficManager
+from src.utils.logger import log
 
 class FleetManager:
     def __init__(self, nav_graph: NavGraph):
@@ -11,14 +12,13 @@ class FleetManager:
         self.next_robot_id = 0
 
     def spawn_robot(self, vertex: int) -> int:
-        if vertex not in self.nav_graph.get_all_vertices():
+        if vertex not in self.nav_graph.nodes:
             raise ValueError(f"Invalid vertex {vertex}")
         if any(r.current_vertex == vertex for r in self.robots.values()):
             raise RuntimeError(f"Vertex {vertex} is occupied")
         robot_id = self.next_robot_id
         self.robots[robot_id] = Robot(robot_id, vertex)
         self.next_robot_id += 1
-        from src.utils.logger import log
         log(f"Robot {robot_id} spawned at vertex {vertex}")
         return robot_id
 
@@ -28,10 +28,10 @@ class FleetManager:
         robot = self.robots[robot_id]
         path = self.nav_graph.get_shortest_path(robot.current_vertex, destination)
         if not path:
-            from src.utils.logger import log
             log(f"Robot {robot_id}: No path to vertex {destination}")
             return False
         robot.assign_task(destination, path)
+        log(f"Robot {robot_id} assigned task to {destination} with path {path}")
         return True
 
     def update(self):

@@ -1,127 +1,154 @@
-[2025-03-30 18:26:05] Robot 0: SPAWNED at vertex 4
-[2025-03-30 18:26:12] Robot 0: ASSIGNED task to vertex 5
-[2025-03-30 18:26:12] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:12] Robot 0: BLOCKED by robot 0
-[2025-03-30 18:26:12] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:12] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:12] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:12] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:13] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:13] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:13] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:13] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:13] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:13] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:13] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:13] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:14] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:14] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:14] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:14] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:14] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:14] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:14] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:14] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:15] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:15] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:15] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:15] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:15] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:15] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:15] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:15] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:16] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:16] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:16] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:16] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:16] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:16] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:16] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:16] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:17] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:17] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:17] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:17] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:17] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:17] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:17] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:17] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:18] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:18] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:18] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:18] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:18] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:18] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:18] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:18] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:19] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:19] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:19] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:19] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:19] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:19] Robot 1: SPAWNED at vertex 0
-[2025-03-30 18:26:19] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:19] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:19] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:20] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:20] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:20] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:20] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:20] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:20] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:20] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:20] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:20] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:21] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:21] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:21] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:21] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:21] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:21] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:21] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:21] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:22] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:22] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:22] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:22] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:22] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:22] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:22] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:22] Robot 2: SPAWNED at vertex 5
-[2025-03-30 18:26:22] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:22] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:23] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:23] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:23] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:23] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:23] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:23] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:23] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:23] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:24] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:24] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:24] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:24] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:24] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:24] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:24] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:24] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:25] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:25] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:25] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:25] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:25] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:25] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:25] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:25] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:26] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:26] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:26] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:26] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:26] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:26] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:26] Robot 0: WAITING at vertex 4
-[2025-03-30 18:26:26] Robot 0: WAITING at vertex 4
-2025-03-30 22:08:50,049 - Loaded graph with 14 vertices and 14 edges
-2025-03-30 22:09:21,923 - Loaded graph with 14 vertices and 14 edges
-2025-03-30 22:09:39,175 - Loaded graph with 14 vertices and 14 edges
+2025-03-30 22:44:25,881 - Loaded graph with 14 vertices and 14 edges
+2025-03-30 22:44:34,681 - Robot 0 spawned at vertex 7
+2025-03-30 22:45:10,888 - Robot 0 assigned task to vertex 7
+2025-03-30 22:45:10,888 - Robot 0 assigned task to 7 with path [7]
+2025-03-30 22:45:11,658 - Robot 0 assigned task to vertex 7
+2025-03-30 22:45:11,658 - Robot 0 assigned task to 7 with path [7]
+2025-03-30 22:45:12,015 - Robot 0 assigned task to vertex 7
+2025-03-30 22:45:12,015 - Robot 0 assigned task to 7 with path [7]
+2025-03-30 22:45:15,914 - Robot 0 assigned task to vertex 2
+2025-03-30 22:45:15,915 - Robot 0 assigned task to 2 with path [7, 12, 8, 9, 2]
+2025-03-30 22:45:15,957 - Robot 0 moving on edge (7, 12)
+2025-03-30 22:45:16,035 - Robot 0 waiting for edge (7, 12)
+2025-03-30 22:45:16,035 - Robot 0 waiting at vertex 7
+2025-03-30 22:45:16,659 - Robot 1 spawned at vertex 2
+2025-03-30 22:45:30,759 - Robot 1 assigned task to vertex 3
+2025-03-30 22:45:30,760 - Robot 1 assigned task to 3 with path [2, 13, 3]
+2025-03-30 22:45:30,773 - Robot 1 moving on edge (2, 13)
+2025-03-30 22:45:30,844 - Robot 1 waiting for edge (2, 13)
+2025-03-30 22:45:30,844 - Robot 1 waiting at vertex 2
+2025-03-30 22:45:31,352 - Robot 2 spawned at vertex 3
+2025-03-30 22:45:46,102 - Robot 2 assigned task to vertex 9
+2025-03-30 22:45:46,102 - Robot 2 assigned task to 9 with path [3, 13, 2, 9]
+2025-03-30 22:45:46,152 - Robot 2 waiting for edge (3, 13)
+2025-03-30 22:45:46,152 - Robot 2 waiting at vertex 3
+2025-03-30 22:45:46,665 - Robot 3 spawned at vertex 9
+2025-03-30 22:45:54,181 - Robot 3 assigned task to vertex 8
+2025-03-30 22:45:54,181 - Robot 3 assigned task to 8 with path [9, 8]
+2025-03-30 22:45:54,195 - Robot 3 moving on edge (9, 8)
+2025-03-30 22:45:54,265 - Robot 3 waiting for edge (9, 8)
+2025-03-30 22:45:54,265 - Robot 3 waiting at vertex 9
+2025-03-30 22:45:54,510 - Robot 4 spawned at vertex 8
+2025-03-30 22:46:02,589 - Robot 4 assigned task to vertex 9
+2025-03-30 22:46:02,590 - Robot 4 assigned task to 9 with path [8, 9]
+2025-03-30 22:46:02,602 - Robot 4 waiting for edge (8, 9)
+2025-03-30 22:46:02,603 - Robot 4 waiting at vertex 8
+2025-03-30 22:46:07,217 - Robot 3 assigned task to vertex 12
+2025-03-30 22:46:07,217 - Robot 3 assigned task to 12 with path [9, 8, 12]
+2025-03-30 22:46:07,264 - Robot 3 waiting for edge (9, 8)
+2025-03-30 22:46:07,264 - Robot 3 waiting at vertex 9
+2025-03-30 22:46:07,376 - Robot 5 spawned at vertex 12
+2025-03-30 22:46:23,860 - Robot 5 assigned task to vertex 6
+2025-03-30 22:46:23,860 - Robot 5 assigned task to 6 with path [12, 7, 6]
+2025-03-30 22:46:23,879 - Robot 5 waiting for edge (12, 7)
+2025-03-30 22:46:23,880 - Robot 5 waiting at vertex 12
+2025-03-30 22:46:24,477 - Robot 6 spawned at vertex 6
+2025-03-30 22:46:26,680 - Robot 6 assigned task to vertex 11
+2025-03-30 22:46:26,681 - Robot 6 assigned task to 11 with path [6, 11]
+2025-03-30 22:46:26,697 - Robot 6 moving on edge (6, 11)
+2025-03-30 22:46:26,775 - Robot 6 waiting for edge (6, 11)
+2025-03-30 22:46:26,775 - Robot 6 waiting at vertex 6
+2025-03-30 22:46:26,828 - Robot 7 spawned at vertex 11
+2025-03-30 22:46:26,949 - Robot 7 assigned task to vertex 11
+2025-03-30 22:46:26,950 - Robot 7 assigned task to 11 with path [11]
+2025-03-30 22:46:36,350 - Robot 7 assigned task to vertex 6
+2025-03-30 22:46:36,351 - Robot 7 assigned task to 6 with path [11, 6]
+2025-03-30 22:46:36,380 - Robot 7 waiting for edge (11, 6)
+2025-03-30 22:46:36,380 - Robot 7 waiting at vertex 11
+2025-03-30 22:46:36,512 - Robot 6 assigned task to vertex 6
+2025-03-30 22:46:36,512 - Robot 6 assigned task to 6 with path [6]
+2025-03-30 22:46:38,076 - Robot 6 assigned task to vertex 7
+2025-03-30 22:46:38,076 - Robot 6 assigned task to 7 with path [6, 7]
+2025-03-30 22:46:38,097 - Robot 6 waiting for edge (6, 7)
+2025-03-30 22:46:38,097 - Robot 6 waiting at vertex 6
+2025-03-30 22:46:38,196 - Robot 0 assigned task to vertex 7
+2025-03-30 22:46:38,196 - Robot 0 assigned task to 7 with path [7]
+2025-03-30 22:46:39,298 - Robot 0 assigned task to vertex 12
+2025-03-30 22:46:39,298 - Robot 0 assigned task to 12 with path [7, 12]
+2025-03-30 22:46:39,360 - Robot 0 waiting for edge (7, 12)
+2025-03-30 22:46:39,360 - Robot 0 waiting at vertex 7
+2025-03-30 22:46:39,441 - Robot 5 assigned task to vertex 12
+2025-03-30 22:46:39,441 - Robot 5 assigned task to 12 with path [12]
+2025-03-30 22:46:42,688 - Robot 5 assigned task to vertex 8
+2025-03-30 22:46:42,688 - Robot 5 assigned task to 8 with path [12, 8]
+2025-03-30 22:46:42,719 - Robot 5 waiting for edge (12, 8)
+2025-03-30 22:46:42,721 - Robot 5 waiting at vertex 12
+2025-03-30 22:46:42,846 - Robot 4 assigned task to vertex 8
+2025-03-30 22:46:42,846 - Robot 4 assigned task to 8 with path [8]
+2025-03-30 22:46:43,778 - Robot 4 assigned task to vertex 9
+2025-03-30 22:46:43,778 - Robot 4 assigned task to 9 with path [8, 9]
+2025-03-30 22:46:43,794 - Robot 4 waiting for edge (8, 9)
+2025-03-30 22:46:43,794 - Robot 4 waiting at vertex 8
+2025-03-30 22:46:43,894 - Robot 3 assigned task to vertex 9
+2025-03-30 22:46:43,894 - Robot 3 assigned task to 9 with path [9]
+2025-03-30 22:46:44,806 - Robot 3 assigned task to vertex 2
+2025-03-30 22:46:44,807 - Robot 3 assigned task to 2 with path [9, 2]
+2025-03-30 22:46:44,865 - Robot 3 waiting for edge (9, 2)
+2025-03-30 22:46:44,865 - Robot 3 waiting at vertex 9
+2025-03-30 22:46:44,953 - Robot 1 assigned task to vertex 2
+2025-03-30 22:46:44,954 - Robot 1 assigned task to 2 with path [2]
+2025-03-30 22:46:46,618 - Robot 1 assigned task to vertex 3
+2025-03-30 22:46:46,618 - Robot 1 assigned task to 3 with path [2, 13, 3]
+2025-03-30 22:46:46,651 - Robot 1 waiting for edge (2, 13)
+2025-03-30 22:46:46,651 - Robot 1 waiting at vertex 2
+2025-03-30 22:46:46,745 - Robot 2 assigned task to vertex 3
+2025-03-30 22:46:46,747 - Robot 2 assigned task to 3 with path [3]
+2025-03-30 22:49:50,222 - Loaded graph with 14 vertices and 14 edges
+2025-03-30 22:49:59,574 - Robot 0 spawned at vertex 8
+2025-03-30 22:50:00,940 - Robot 0 assigned task to vertex 8
+2025-03-30 22:50:00,941 - Robot 0 assigned task to 8 with path [8]
+2025-03-30 22:50:11,588 - Robot 0 assigned task to vertex 6
+2025-03-30 22:50:11,589 - Robot 0 assigned task to 6 with path [8, 12, 7, 6]
+2025-03-30 22:50:11,602 - Robot 0 moving on edge (8, 12)
+2025-03-30 22:50:11,671 - Robot 0 waiting for edge (8, 12)
+2025-03-30 22:50:11,671 - Robot 0 waiting at vertex 8
+2025-03-30 22:50:12,019 - Robot 1 spawned at vertex 6
+2025-03-30 22:50:24,055 - Robot 1 assigned task to vertex 7
+2025-03-30 22:50:24,056 - Robot 1 assigned task to 7 with path [6, 7]
+2025-03-30 22:50:24,080 - Robot 1 moving on edge (6, 7)
+2025-03-30 22:50:24,152 - Robot 1 waiting for edge (6, 7)
+2025-03-30 22:50:24,152 - Robot 1 waiting at vertex 6
+2025-03-30 22:50:25,067 - Robot 2 spawned at vertex 7
+2025-03-30 22:50:25,171 - Robot 2 assigned task to vertex 7
+2025-03-30 22:50:25,172 - Robot 2 assigned task to 7 with path [7]
+2025-03-30 22:50:48,354 - Robot 0 assigned task to vertex 12
+2025-03-30 22:50:48,356 - Robot 0 assigned task to 12 with path [8, 12]
+2025-03-30 22:50:48,371 - Robot 0 waiting for edge (8, 12)
+2025-03-30 22:50:48,372 - Robot 0 waiting at vertex 8
+2025-03-30 22:50:49,658 - Robot 3 spawned at vertex 12
+2025-03-30 22:50:50,710 - Robot 3 assigned task to vertex 12
+2025-03-30 22:50:50,710 - Robot 3 assigned task to 12 with path [12]
+2025-03-30 22:50:51,215 - Robot 3 assigned task to vertex 12
+2025-03-30 22:50:51,216 - Robot 3 assigned task to 12 with path [12]
+2025-03-30 22:50:51,540 - Robot 3 assigned task to vertex 12
+2025-03-30 22:50:51,540 - Robot 3 assigned task to 12 with path [12]
+2025-03-30 22:50:52,156 - Robot 3 assigned task to vertex 12
+2025-03-30 22:50:52,157 - Robot 3 assigned task to 12 with path [12]
+2025-03-30 22:50:52,396 - Robot 3 assigned task to vertex 12
+2025-03-30 22:50:52,397 - Robot 3 assigned task to 12 with path [12]
+2025-03-30 22:50:52,770 - Robot 3 assigned task to vertex 12
+2025-03-30 22:50:52,771 - Robot 3 assigned task to 12 with path [12]
+2025-03-30 22:50:53,502 - Robot 3 assigned task to vertex 12
+2025-03-30 22:50:53,503 - Robot 3 assigned task to 12 with path [12]
+2025-03-30 22:50:53,960 - Robot 3 assigned task to vertex 12
+2025-03-30 22:50:53,960 - Robot 3 assigned task to 12 with path [12]
+2025-03-30 22:50:54,471 - Robot 3 assigned task to vertex 12
+2025-03-30 22:50:54,471 - Robot 3 assigned task to 12 with path [12]
+2025-03-30 22:50:55,956 - Robot 3 assigned task to vertex 8
+2025-03-30 22:50:55,956 - Robot 3 assigned task to 8 with path [12, 8]
+2025-03-30 22:50:55,990 - Robot 3 waiting for edge (12, 8)
+2025-03-30 22:50:55,990 - Robot 3 waiting at vertex 12
+2025-03-30 22:50:56,830 - Robot 0 assigned task to vertex 8
+2025-03-30 22:50:56,831 - Robot 0 assigned task to 8 with path [8]
+2025-03-30 22:50:58,371 - Robot 0 assigned task to vertex 8
+2025-03-30 22:50:58,372 - Robot 0 assigned task to 8 with path [8]
+2025-03-30 22:50:59,484 - Robot 0 assigned task to vertex 12
+2025-03-30 22:50:59,484 - Robot 0 assigned task to 12 with path [8, 12]
+2025-03-30 22:50:59,518 - Robot 0 waiting for edge (8, 12)
+2025-03-30 22:50:59,518 - Robot 0 waiting at vertex 8
+2025-03-30 22:50:59,858 - Robot 3 assigned task to vertex 12
+2025-03-30 22:50:59,859 - Robot 3 assigned task to 12 with path [12]
+2025-03-30 22:51:01,094 - Robot 3 assigned task to vertex 8
+2025-03-30 22:51:01,095 - Robot 3 assigned task to 8 with path [12, 8]
+2025-03-30 22:51:01,128 - Robot 3 waiting for edge (12, 8)
+2025-03-30 22:51:01,128 - Robot 3 waiting at vertex 12

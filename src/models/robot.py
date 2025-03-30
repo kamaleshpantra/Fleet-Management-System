@@ -1,5 +1,4 @@
 from enum import Enum
-import time
 from typing import List, Optional
 from src.utils.logger import log
 
@@ -17,8 +16,8 @@ class Robot:
         self.path: List[int] = []
         self.status = RobotStatus.IDLE
         self.color = self.generate_color(robot_id)
-        self.progress = 0.0  # 0 to 1 for movement animation
-        self.speed = 0.05  # Progress per update
+        self.progress = 0.0
+        self.speed = 0.05
 
     @staticmethod
     def generate_color(robot_id: int) -> str:
@@ -27,7 +26,7 @@ class Robot:
 
     def assign_task(self, destination: int, path: List[int]):
         self.destination_vertex = destination
-        self.path = path[1:]  # Exclude current vertex
+        self.path = path[1:]
         self.status = RobotStatus.MOVING
         self.progress = 0.0
         log(f"Robot {self.id} assigned task to vertex {destination}")
@@ -49,8 +48,3 @@ class Robot:
             else:
                 self.status = RobotStatus.WAITING
                 log(f"Robot {self.id} waiting at vertex {self.current_vertex}")
-        elif self.status == RobotStatus.WAITING and self.path:
-            next_vertex = self.path[0]
-            if traffic_manager.request_move(self, (self.current_vertex, next_vertex)):
-                self.status = RobotStatus.MOVING
-                log(f"Robot {self.id} resuming movement")

@@ -12,18 +12,16 @@ class NavGraph:
         try:
             with open(json_path, 'r') as f:
                 data = json.load(f)
-            # Handle nested "levels" structure
             if "levels" in data and "level1" in data["levels"]:
                 level_data = data["levels"]["level1"]
                 vertices = level_data.get('vertices', [])
                 lanes = level_data.get('lanes', [])
             else:
-                # Fallback to flat structure (for compatibility with problem statement example)
                 vertices = data.get('vertices', [])
                 lanes = data.get('lanes', [])
 
             if not vertices:
-                log("Error: No vertices found in nav_graph_1.json")
+                log("Error: No vertices found in nav_graph")
                 raise ValueError("No vertices in JSON file")
 
             for idx, vertex in enumerate(vertices):
@@ -41,12 +39,6 @@ class NavGraph:
                     log(f"Warning: Invalid lane format: {lane}")
 
             log(f"Loaded graph with {len(self.graph.nodes)} vertices and {len(self.graph.edges)} edges")
-        except FileNotFoundError:
-            log(f"Error: Could not find file {json_path}")
-            raise
-        except json.JSONDecodeError:
-            log(f"Error: Invalid JSON in {json_path}")
-            raise
         except Exception as e:
             log(f"Error loading nav_graph: {str(e)}")
             raise
@@ -63,8 +55,10 @@ class NavGraph:
     def get_vertex_attributes(self, vertex_id: int) -> Dict:
         return {k: v for k, v in self.graph.nodes[vertex_id].items() if k != 'pos'}
 
-    def get_all_vertices(self) -> List[int]:
+    @property
+    def nodes(self) -> List[int]:
         return list(self.graph.nodes)
 
-    def get_all_edges(self) -> List[Tuple[int, int]]:
+    @property
+    def edges(self) -> List[Tuple[int, int]]:
         return list(self.graph.edges)
