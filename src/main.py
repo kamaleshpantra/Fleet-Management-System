@@ -17,7 +17,7 @@ if __name__ == "__main__":
     )
 
     try:
-        nav_graph = NavGraph("data/nav_graph.json")
+        nav_graph = NavGraph("data/nav_graph_1.json")
         traffic_manager = TrafficManager(nav_graph)
         fleet_manager = FleetManager(nav_graph, traffic_manager)
         gui = FleetGUI(fleet_manager, traffic_manager, nav_graph)
