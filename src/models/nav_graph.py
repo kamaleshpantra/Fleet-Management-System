@@ -1,6 +1,7 @@
 import json
 import networkx as nx
 from typing import List, Dict, Tuple
+from src.utils.logger import log
 
 class NavGraph:
     def __init__(self, json_path: str):
@@ -8,16 +9,47 @@ class NavGraph:
         self.load_from_json(json_path)
 
     def load_from_json(self, json_path: str):
-        with open(json_path, 'r') as f:
-            data = json.load(f)
-        vertices = data.get('vertices', [])
-        lanes = data.get('lanes', [])
-        for idx, vertex in enumerate(vertices):
-            x, y, attrs = vertex[0], vertex[1], vertex[2] if len(vertex) > 2 else {}
-            self.graph.add_node(idx, pos=(x, y), **attrs)
-        for lane in lanes:
-            if len(lane) >= 2:
-                self.graph.add_edge(lane[0], lane[1])
+        try:
+            with open(json_path, 'r') as f:
+                data = json.load(f)
+            # Handle nested "levels" structure
+            if "levels" in data and "level1" in data["levels"]:
+                level_data = data["levels"]["level1"]
+                vertices = level_data.get('vertices', [])
+                lanes = level_data.get('lanes', [])
+            else:
+                # Fallback to flat structure (for compatibility with problem statement example)
+                vertices = data.get('vertices', [])
+                lanes = data.get('lanes', [])
+
+            if not vertices:
+                log("Error: No vertices found in nav_graph_1.json")
+                raise ValueError("No vertices in JSON file")
+
+            for idx, vertex in enumerate(vertices):
+                if len(vertex) >= 2:
+                    x, y = vertex[0], vertex[1]
+                    attrs = vertex[2] if len(vertex) > 2 else {}
+                    self.graph.add_node(idx, pos=(x, y), **attrs)
+                else:
+                    log(f"Warning: Invalid vertex format at index {idx}")
+
+            for lane in lanes:
+                if len(lane) >= 2:
+                    self.graph.add_edge(lane[0], lane[1])
+                else:
+                    log(f"Warning: Invalid lane format: {lane}")
+
+            log(f"Loaded graph with {len(self.graph.nodes)} vertices and {len(self.graph.edges)} edges")
+        except FileNotFoundError:
+            log(f"Error: Could not find file {json_path}")
+            raise
+        except json.JSONDecodeError:
+            log(f"Error: Invalid JSON in {json_path}")
+            raise
+        except Exception as e:
+            log(f"Error loading nav_graph: {str(e)}")
+            raise
 
     def get_shortest_path(self, start: int, end: int) -> List[int]:
         try:

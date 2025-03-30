@@ -122,3 +122,6 @@
 [2025-03-30 18:26:26] Robot 0: WAITING at vertex 4
 [2025-03-30 18:26:26] Robot 0: WAITING at vertex 4
 [2025-03-30 18:26:26] Robot 0: WAITING at vertex 4
+2025-03-30 22:08:50,049 - Loaded graph with 14 vertices and 14 edges
+2025-03-30 22:09:21,923 - Loaded graph with 14 vertices and 14 edges
+2025-03-30 22:09:39,175 - Loaded graph with 14 vertices and 14 edges
