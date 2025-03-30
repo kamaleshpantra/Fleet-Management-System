@@ -55,7 +55,7 @@ This project implements a fleet management system for multi-robots, as part of t
 
 ## 🌟 Gui Design
 
-| **Interactive Environment** | Intuitive GUI with clickable vertices and lanes | ![Interactive GUI](Screenshots/gui_interaction.png) |
+| **Interactive Environment** | Intuitive GUI with clickable vertices and lanes | ![Interactive GUI](screenshots/gui_interaction.png) |
 
 ## Design Choices
 
