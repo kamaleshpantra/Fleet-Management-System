@@ -1,7 +1,6 @@
 # 🚀 Fleet Management System
 This project implements a fleet management system for multi-robots, as part of the PSG Hackathon.
-## video explaination
-| ![video](media/video_explanation.mp4) |
+## video explaination is in media folder
 
 ## Setup
 
