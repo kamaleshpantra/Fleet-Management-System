@@ -1,5 +1,4 @@
-# Fleet Management System
-
+# 🚀 Fleet Management System
 This project implements a fleet management system for multi-robots, as part of the PSG Hackathon.
 
 ## Setup
@@ -54,9 +53,9 @@ This project implements a fleet management system for multi-robots, as part of t
 5.  **Logging:**
     * Robot actions and events are logged to `logs/fleet_logs.txt`.
 
-## Screenshots
+## 🌟 Gui Design
 
-* *(Insert screenshots here to demonstrate the GUI and its features)*
+| **Interactive Environment** | Intuitive GUI with clickable vertices and lanes | ![Interactive GUI](Screenshots/gui_interaction.png) |
 
 ## Design Choices
 
