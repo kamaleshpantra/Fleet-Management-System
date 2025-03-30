@@ -1,59 +1,26 @@
-
-import logging
+from typing import Dict, Set, Tuple
+from src.models.robot import Robot
 
 class TrafficManager:
-    def __init__(self, nav_graph):
-        self.nav_graph = nav_graph
-        self.reserved_lanes = {}  # Track which lanes are occupied
-        self.logger = logging.getLogger(__name__)
+    def __init__(self):
+        self.occupied_edges: Dict[Tuple[int, int], Robot] = {}
+        self.waiting_queues: Dict[Tuple[int, int], Set[Robot]] = {}
 
-    def check_lane_availability(self, lane):
-        """
-        Checks if a lane is available.
-        """
-        return lane not in self.reserved_lanes
+    def request_move(self, robot: Robot, edge: Tuple[int, int]) -> bool:
+        if edge in self.occupied_edges or edge[1] in {r.current_vertex for r in self.occupied_edges.values()}:
+            if edge not in self.waiting_queues:
+                self.waiting_queues[edge] = set()
+            self.waiting_queues[edge].add(robot)
+            return False
+        self.occupied_edges[edge] = robot
+        return True
 
-    def reserve_lane(self, lane):
-        """
-        Reserves a lane.
-        """
-        self.reserved_lanes[lane] = True
-        self.logger.info(f"Lane {lane} reserved")
-
-    def release_lane(self, lane):
-        """
-        Releases a reserved lane.
-        """
-        if lane in self.reserved_lanes:
-            del self.reserved_lanes[lane]
-            self.logger.info(f"Lane {lane} released")
-
-    def handle_potential_collisions(self, robots):
-        """
-        Handles potential collisions between robots.
-        This is a complex part and requires a strategy.
-        A simple strategy is implemented here: robots wait if their next lane is occupied.
-        """
-        # Create a dictionary to track the next vertex for each robot
-        next_vertices = {}
-        for robot in robots:
-            if robot.status == "moving" and robot.path:
-                next_vertices[robot] = robot.path[0]
-
-        # Check for conflicts (multiple robots heading to the same next vertex)
-        conflicts = {}
-        for robot1, next_vertex1 in next_vertices.items():
-            for robot2, next_vertex2 in next_vertices.items():
-                if robot1 != robot2 and next_vertex1 == next_vertex2:
-                    if next_vertex1 not in conflicts:
-                        conflicts[next_vertex1] = [robot1]
-                    conflicts[next_vertex1].append(robot2)
-
-        # Handle conflicts (e.g., make robots wait)
-        for vertex, conflicting_robots in conflicts.items():
-            # A simple strategy: make all conflicting robots wait
-            for robot in conflicting_robots:
-                robot.wait()
-                self.logger.warning(
-                    f"Collision avoided: Robot {robot.robot_id} waiting at vertex {robot.current_vertex}"
-                )
+    def complete_move(self, robot: Robot, edge: Tuple[int, int]):
+        if edge in self.occupied_edges:
+            del self.occupied_edges[edge]
+        if edge in self.waiting_queues and self.waiting_queues[edge]:
+            next_robot = self.waiting_queues[edge].pop()
+            if self.request_move(next_robot, edge):
+                next_robot.status = RobotStatus.MOVING
+                from src.utils.logger import log
+                log(f"Robot {next_robot.id} resumed from queue")

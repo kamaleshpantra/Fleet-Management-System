@@ -1,159 +1,132 @@
 import tkinter as tk
-from tkinter import messagebox
-import logging
+from tkinter import ttk, messagebox
+from src.models.nav_graph import NavGraph
+from src.controllers.fleet_manager import FleetManager
 
 class FleetGUI:
-    def __init__(self, fleet_manager, traffic_manager, nav_graph):
-        self.fleet_manager = fleet_manager
-        self.traffic_manager = traffic_manager
+    def __init__(self, master, nav_graph: NavGraph, fleet_manager: FleetManager):
+        self.master = master
         self.nav_graph = nav_graph
-        self.window = tk.Tk()
-        self.window.title("Fleet Management System")  # Set window title
-        self.canvas_width = 800
-        self.canvas_height = 600
-        self.canvas = tk.Canvas(self.window, width=self.canvas_width, height=self.canvas_height)
-        self.canvas.pack()
-        self.robot_circles = {}  # Store GUI representations of robots
+        self.fleet_manager = fleet_manager
         self.selected_robot = None
-        self.logger = logging.getLogger(__name__)
+        self.scale = 1
+        self.offset = 50
+        self.setup_ui()
 
-        self.draw_environment()
-        self.setup_event_handlers()
-        self.update_robots()  # Start updating robot positions
+    def setup_ui(self):
+        self.master.title("Fleet Management System")
+        self.master.geometry("1200x800")
+        self.master.grid_rowconfigure(0, weight=1)
+        self.master.grid_columnconfigure(0, weight=1)
+        self.master.grid_columnconfigure(1, weight=0)
+
+        # Canvas
+        self.canvas = tk.Canvas(self.master, bg='white')
+        self.canvas.grid(row=0, column=0, sticky="nsew")
+
+        # Control Panel
+        control_panel = tk.Frame(self.master, width=300)
+        control_panel.grid(row=0, column=1, sticky="nsew")
+
+        # Robot List
+        self.robot_tree = ttk.Treeview(control_panel, columns=('status', 'location'), height=10)
+        self.robot_tree.heading('#0', text='Robot ID')
+        self.robot_tree.heading('status', text='Status')
+        self.robot_tree.heading('location', text='Location')
+        self.robot_tree.pack(fill=tk.BOTH, expand=True, pady=5)
+
+        # Log Display
+        self.log_text = tk.Text(control_panel, height=10, state='disabled')
+        self.log_text.pack(fill=tk.BOTH, expand=True, pady=5)
+
+        # Bindings
+        self.canvas.bind("<Button-1>", self.on_canvas_click)
+        self.robot_tree.bind("<<TreeviewSelect>>", self.on_robot_select)
+
+        self.update_gui()
+        self.master.after(50, self.update)
 
     def draw_environment(self):
-        """
-        Draws the vertices and lanes on the canvas.
-        """
-        self.canvas.delete("all")  # Clear the canvas
-        for vertex_id, vertex in self.nav_graph.vertices.items():
-            x, y = vertex["coordinates"]
-            self.draw_vertex(x, y, vertex_id, vertex.get("attributes", {}).get("name"))
+        self.canvas.delete("all")
+        # Auto-scale
+        positions = [self.nav_graph.get_vertex_position(v) for v in self.nav_graph.get_all_vertices()]
+        min_x, max_x = min(p[0] for p in positions), max(p[0] for p in positions)
+        min_y, max_y = min(p[1] for p in positions), max(p[1] for p in positions)
+        self.scale = min((800 - 100) / (max_x - min_x), (600 - 100) / (max_y - min_y)) if max_x > min_x else 50
 
-        for lane in self.nav_graph.lanes:
-            start_vertex = self.nav_graph.vertices[lane[0]]
-            end_vertex = self.nav_graph.vertices[lane[1]]
-            start_x, start_y = start_vertex["coordinates"]
-            end_x, end_y = end_vertex["coordinates"]
-            self.draw_lane(start_x, start_y, end_x, end_y)
+        # Draw lanes
+        for u, v in self.nav_graph.edges:
+            x1, y1 = self.scale_position(self.nav_graph.get_vertex_position(u))
+            x2, y2 = self.scale_position(self.nav_graph.get_vertex_position(v))
+            self.canvas.create_line(x1, y1, x2, y2, fill="gray", width=2)
 
-        # Draw robots after drawing the environment
-        for robot in self.fleet_manager.get_all_robots():
-            self.draw_robot(robot)
+        # Draw vertices
+        for v in self.nav_graph.nodes:
+            x, y = self.scale_position(self.nav_graph.get_vertex_position(v))
+            fill = "orange" if self.nav_graph.get_vertex_attributes(v).get('is_charger', False) else "lightblue"
+            self.canvas.create_oval(x-10, y-10, x+10, y+10, fill=fill, tags=f"vertex_{v}")
+            name = self.nav_graph.get_vertex_attributes(v).get('name', str(v))
+            self.canvas.create_text(x, y+20, text=name)
 
-    def draw_vertex(self, x, y, vertex_id, name=None):
-        """
-        Draws a vertex on the canvas.
-        """
-        self.canvas.create_oval(x - 5, y - 5, x + 5, y + 5, fill="blue", tags=("vertex", f"vertex_{vertex_id}"))
-        if name:
-            self.canvas.create_text(x, y - 10, text=name, tags=("vertex_label", f"vertex_label_{vertex_id}"))
-        else:
-            self.canvas.create_text(x, y - 10, text=str(vertex_id), tags=("vertex_label", f"vertex_label_{vertex_id}"))
+        # Draw robots
+        positions = self.fleet_manager.get_robot_positions()
+        statuses = self.fleet_manager.get_robot_statuses()
+        colors = self.fleet_manager.get_robot_colors()
+        for robot_id, (x, y) in positions.items():
+            x, y = self.scale_position((x, y))
+            self.canvas.create_oval(x-8, y-8, x+8, y+8, fill=colors[robot_id], tags=f"robot_{robot_id}")
+            self.canvas.create_text(x, y-20, text=f"R{robot_id} ({statuses[robot_id]})")
 
-    def draw_lane(self, start_x, start_y, end_x, end_y):
-        """
-        Draws a lane on the canvas.
-        """
-        self.canvas.create_line(start_x, start_y, end_x, end_y, fill="black", tags="lane")
+    def scale_position(self, pos):
+        return pos[0] * self.scale + self.offset, pos[1] * self.scale + self.offset
 
-    def draw_robot(self, robot):
-        """
-        Draws a robot on the canvas.
-        """
-        x, y = self.nav_graph.vertices[robot.current_vertex]["coordinates"]
-        color = "red" if robot.status != "complete" else "green"  # Change color based on status
-        if robot.robot_id not in self.robot_circles:
-            circle = self.canvas.create_oval(x - 3, y - 3, x + 3, y + 3, fill=color, tags=("robot", f"robot_{robot.robot_id}"))
-            self.robot_circles[robot.robot_id] = circle
-            self.canvas.create_text(x, y - 10, text=str(robot.robot_id), tags=("robot_label", f"robot_label_{robot.robot_id}"))
-        else:
-            self.canvas.coords(self.robot_circles[robot.robot_id], x - 3, y - 3, x + 3, y + 3)
-            self.canvas.itemconfig(self.robot_circles[robot.robot_id], fill=color)
-
-    def setup_event_handlers(self):
-        """
-        Sets up event handlers for mouse clicks.
-        """
-        self.canvas.bind("<Button-1>", self.on_canvas_click)
+    def update_gui(self):
+        self.draw_environment()
+        self.robot_tree.delete(*self.robot_tree.get_children())
+        for robot_id, status in self.fleet_manager.get_robot_statuses().items():
+            location = self.nav_graph.get_vertex_attributes(self.fleet_manager.robots[robot_id].current_vertex).get('name', str(robot_id))
+            self.robot_tree.insert('', 'end', text=f"R{robot_id}", values=(status, location))
+        try:
+            with open('logs/fleet_logs.txt', 'r') as f:
+                self.log_text.config(state='normal')
+                self.log_text.delete(1.0, tk.END)
+                self.log_text.insert(tk.END, ''.join(f.readlines()[-20:]))
+                self.log_text.config(state='disabled')
+        except FileNotFoundError:
+            pass
 
     def on_canvas_click(self, event):
-        """
-        Handles mouse clicks on the canvas.
-        """
-        x, y = event.x, event.y
-        clicked_vertex = self.find_clicked_vertex(x, y)
+        clicked_vertex = None
+        for v in self.nav_graph.nodes:
+            x, y = self.scale_position(self.nav_graph.get_vertex_position(v))
+            if ((event.x - x)**2 + (event.y - y)**2)**0.5 < 10:
+                clicked_vertex = v
+                break
         if clicked_vertex is not None:
-            self.handle_vertex_click(clicked_vertex)
-        else:
-            clicked_robot = self.find_clicked_robot(x, y)
-            if clicked_robot is not None:
-                self.handle_robot_click(clicked_robot)
+            if self.selected_robot is None:
+                try:
+                    self.fleet_manager.spawn_robot(clicked_vertex)
+                except RuntimeError as e:
+                    messagebox.showerror("Error", str(e))
+            else:
+                if not self.fleet_manager.assign_task(self.selected_robot, clicked_vertex):
+                    messagebox.showerror("Error", "No path to destination")
+                self.selected_robot = None
+            self.update_gui()
 
-    def find_clicked_vertex(self, x, y):
-        """
-        Finds the clicked vertex.
-        """
-        for vertex_id, vertex in self.nav_graph.vertices.items():
-            vx, vy = vertex["coordinates"]
-            if vx - 5 <= x <= vx + 5 and vy - 5 <= y <= vy + 5:
-                return vertex_id
-        return None
+        for robot_id, (x, y) in self.fleet_manager.get_robot_positions().items():
+            x, y = self.scale_position((x, y))
+            if ((event.x - x)**2 + (event.y - y)**2)**0.5 < 10:
+                self.selected_robot = robot_id
+                break
 
-    def find_clicked_robot(self, x, y):
-        """
-        Finds the clicked robot.
-        """
-        for robot in self.fleet_manager.get_all_robots():
-            rx, ry = self.nav_graph.vertices[robot.current_vertex]["coordinates"]
-            if rx - 3 <= x <= rx + 3 and ry - 3 <= y <= ry + 3:
-                return robot
-        return None
+    def on_robot_select(self, event):
+        selected = self.robot_tree.selection()
+        if selected:
+            self.selected_robot = int(self.robot_tree.item(selected[0], 'text')[1:])
+            self.update_gui()
 
-    def handle_vertex_click(self, vertex_id):
-        """
-        Handles clicks on vertices.
-        """
-        if self.selected_robot is None:
-            self.spawn_robot(vertex_id)
-        else:
-            self.assign_task(self.selected_robot, vertex_id)
-            self.selected_robot = None  # Deselect the robot after assigning a task
-
-    def handle_robot_click(self, robot):
-        """
-        Handles clicks on robots.
-        """
-        self.selected_robot = robot
-
-    def spawn_robot(self, vertex_id):
-        """
-        Spawns a robot at the given vertex.
-        """
-        robot = self.fleet_manager.spawn_robot(vertex_id)
-        self.draw_robot(robot)
-        self.logger.info(f"Robot spawned at vertex {vertex_id}")
-
-    def assign_task(self, robot, destination_vertex):
-        """
-        Assigns a task to the selected robot.
-        """
-        if self.fleet_manager.assign_task_to_robot(robot.robot_id, destination_vertex):
-            self.logger.info(f"Task assigned to robot {robot.robot_id} to go to {destination_vertex}")
-        else:
-            messagebox.showerror("Error", "Could not assign task to robot.")
-
-    def update_robots(self):
-        """
-        Updates the positions of the robots on the canvas.
-        """
-        self.fleet_manager.update_robot_statuses()
-        for robot in self.fleet_manager.get_all_robots():
-            self.draw_robot(robot)
-        self.window.after(100, self.update_robots)  # Update every 100 milliseconds
-
-    def run(self):
-        """
-        Runs the GUI main loop.
-        """
-        self.window.mainloop()
+    def update(self):
+        self.fleet_manager.update()
+        self.update_gui()
+        self.master.after(50, self.update)

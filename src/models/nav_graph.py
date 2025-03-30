@@ -1,43 +1,38 @@
 import json
+import networkx as nx
+from typing import List, Dict, Tuple
 
 class NavGraph:
-    def __init__(self, file_path):
-        self.vertices = {}
-        self.lanes = []
-        self.load_graph(file_path)
-        self.adjacency_list = self.build_adjacency_list()
+    def __init__(self, json_path: str):
+        self.graph = nx.Graph()
+        self.load_from_json(json_path)
 
-    def load_graph(self, file_path):
-        with open(file_path, 'r') as f:
+    def load_from_json(self, json_path: str):
+        with open(json_path, 'r') as f:
             data = json.load(f)
-        for item in data:
-            if isinstance(item, list) and len(item) > 2:  # Vertex
-                vertex_id = len(self.vertices)
-                self.vertices[vertex_id] = {
-                    "coordinates": item[:2],
-                    "attributes": item[2]
-                }
-            elif isinstance(item, list) and len(item) == 2:  # Lane
-                self.lanes.append(item)
+        vertices = data.get('vertices', [])
+        lanes = data.get('lanes', [])
+        for idx, vertex in enumerate(vertices):
+            x, y, attrs = vertex[0], vertex[1], vertex[2] if len(vertex) > 2 else {}
+            self.graph.add_node(idx, pos=(x, y), **attrs)
+        for lane in lanes:
+            if len(lane) >= 2:
+                self.graph.add_edge(lane[0], lane[1])
 
-    def get_vertex_by_name(self, name):
-        for vertex_id, vertex in self.vertices.items():
-            if vertex["attributes"].get("name") == name:
-                return vertex_id
-        return None
+    def get_shortest_path(self, start: int, end: int) -> List[int]:
+        try:
+            return nx.shortest_path(self.graph, start, end)
+        except nx.NetworkXNoPath:
+            return []
 
-    def build_adjacency_list(self):
-        """
-        Builds an adjacency list representation of the graph for pathfinding.
-        """
-        adjacency_list = {vertex_id: [] for vertex_id in self.vertices}
-        for lane in self.lanes:
-            adjacency_list[lane[0]].append(lane[1])
-            adjacency_list[lane[1]].append(lane[0])  # Assuming bidirectional lanes
-        return adjacency_list
+    def get_vertex_position(self, vertex_id: int) -> Tuple[float, float]:
+        return self.graph.nodes[vertex_id]['pos']
 
-    def get_neighbors(self, vertex_id):
-        """
-        Returns a list of neighboring vertex IDs for a given vertex.
-        """
-        return self.adjacency_list.get(vertex_id, [])
+    def get_vertex_attributes(self, vertex_id: int) -> Dict:
+        return {k: v for k, v in self.graph.nodes[vertex_id].items() if k != 'pos'}
+
+    def get_all_vertices(self) -> List[int]:
+        return list(self.graph.nodes)
+
+    def get_all_edges(self) -> List[Tuple[int, int]]:
+        return list(self.graph.edges)

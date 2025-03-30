@@ -1,66 +1,58 @@
-import logging
-from src.utils.helpers import a_star_pathfinding
+from typing import Dict
+from src.models.robot import Robot, RobotStatus
+from src.models.nav_graph import NavGraph
+from src.controllers.traffic_manager import TrafficManager
 
 class FleetManager:
-    def __init__(self, nav_graph, traffic_manager):
+    def __init__(self, nav_graph: NavGraph):
+        self.robots: Dict[int, Robot] = {}
         self.nav_graph = nav_graph
-        self.traffic_manager = traffic_manager
-        self.robots = {}
-        self.next_robot_id = 1
-        self.logger = logging.getLogger(__name__)
+        self.traffic_manager = TrafficManager()
+        self.next_robot_id = 0
 
-    def spawn_robot(self, start_vertex):
-        robot = Robot(self.next_robot_id, start_vertex)
-        self.robots[self.next_robot_id] = robot
+    def spawn_robot(self, vertex: int) -> int:
+        if vertex not in self.nav_graph.get_all_vertices():
+            raise ValueError(f"Invalid vertex {vertex}")
+        if any(r.current_vertex == vertex for r in self.robots.values()):
+            raise RuntimeError(f"Vertex {vertex} is occupied")
+        robot_id = self.next_robot_id
+        self.robots[robot_id] = Robot(robot_id, vertex)
         self.next_robot_id += 1
-        self.logger.info(f"Robot {robot.robot_id} spawned at vertex {start_vertex}")
-        return robot
+        from src.utils.logger import log
+        log(f"Robot {robot_id} spawned at vertex {vertex}")
+        return robot_id
 
-    def assign_task_to_robot(self, robot_id, destination_vertex):
-        robot = self.robots.get(robot_id)
-        if robot:
-            robot.assign_task(destination_vertex)
-            self.logger.info(f"Task assigned to Robot {robot.robot_id} to go to {destination_vertex}")
-            self.plan_path_for_robot(robot)  # Plan the path immediately
-            return True
-        return False
+    def assign_task(self, robot_id: int, destination: int) -> bool:
+        if robot_id not in self.robots:
+            return False
+        robot = self.robots[robot_id]
+        path = self.nav_graph.get_shortest_path(robot.current_vertex, destination)
+        if not path:
+            from src.utils.logger import log
+            log(f"Robot {robot_id}: No path to vertex {destination}")
+            return False
+        robot.assign_task(destination, path)
+        return True
 
-    def plan_path_for_robot(self, robot):
-        """
-        Plans a path for the robot using A*.
-        """
-        if robot.destination_vertex is not None:
-            path = a_star_pathfinding(
-                self.nav_graph, robot.current_vertex, robot.destination_vertex
-            )
-            if path:
-                robot.set_path(path[1:])  # Exclude the starting vertex
-                robot.status = "moving"
-                self.logger.info(f"Robot {robot.robot_id} path: {path}")
-            else:
-                self.logger.warning(f"No path found for Robot {robot.robot_id}")
-                robot.status = "idle"  # Or handle this case appropriately
-
-    def update_robot_statuses(self):
-        """
-        Updates the status of each robot and moves them along their paths.
-        """
+    def update(self):
         for robot in self.robots.values():
-            if robot.status == "moving":
-                # Check for lane availability before moving
-                next_lane = (robot.current_vertex, robot.next_vertex) if robot.next_vertex is not None else None
-                if next_lane is not None and self.traffic_manager.check_lane_availability(next_lane):
-                    self.traffic_manager.reserve_lane(next_lane)
-                    robot.move_along_path()
-                    self.logger.info(f"Robot {robot.robot_id} moved to vertex {robot.current_vertex}")
-                    self.traffic_manager.release_lane(
-                        (next_lane[0], next_lane[1])
-                    )  # Release the lane after moving
-                else:
-                    robot.wait()
-                    self.logger.warning(f"Robot {robot.robot_id} is waiting at vertex {robot.current_vertex}")
-            elif robot.status == "planning":
-                self.plan_path_for_robot(robot)
+            robot.update(self.traffic_manager)
 
-    def get_all_robots(self):
-        return list(self.robots.values())
+    def get_robot_positions(self) -> Dict[int, tuple]:
+        positions = {}
+        for robot in self.robots.values():
+            if robot.status == RobotStatus.MOVING and robot.path:
+                start_pos = self.nav_graph.get_vertex_position(robot.current_vertex)
+                next_pos = self.nav_graph.get_vertex_position(robot.path[0])
+                x = start_pos[0] + (next_pos[0] - start_pos[0]) * robot.progress
+                y = start_pos[1] + (next_pos[1] - start_pos[1]) * robot.progress
+                positions[robot.id] = (x, y)
+            else:
+                positions[robot.id] = self.nav_graph.get_vertex_position(robot.current_vertex)
+        return positions
+
+    def get_robot_statuses(self) -> Dict[int, str]:
+        return {r.id: r.status.value for r in self.robots.values()}
+
+    def get_robot_colors(self) -> Dict[int, str]:
+        return {r.id: r.color for r in self.robots.values()}
