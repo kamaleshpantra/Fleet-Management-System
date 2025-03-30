@@ -5,7 +5,7 @@ This project implements a fleet management system for multi-robots, as part of t
 
 1.  **Clone the repository:**
     ```bash
-    git clone <https://github.com/kamaleshpantra/Fleet-Management-System.git>
+    git clone <https://github.com/kamaleshpantra/GoatPSGHackathon_22PD15.git>
     ```
 2.  **Navigate to the project directory:**
     ```bash
