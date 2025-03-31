@@ -152,3 +152,51 @@
 2025-03-30 22:51:01,095 - Robot 3 assigned task to 8 with path [12, 8]
 2025-03-30 22:51:01,128 - Robot 3 waiting for edge (12, 8)
 2025-03-30 22:51:01,128 - Robot 3 waiting at vertex 12
+2025-03-30 23:24:01,233 - Loaded graph with 14 vertices and 14 edges
+2025-03-30 23:45:57,290 - Loaded graph with 14 vertices and 14 edges
+2025-03-30 23:49:25,894 - Loaded graph with 14 vertices and 14 edges
+2025-03-30 23:49:42,694 - Robot 0 spawned at vertex 8
+2025-03-30 23:49:44,961 - Robot 0 assigned task to vertex 8
+2025-03-30 23:49:44,963 - Robot 0 assigned task to 8 with path [8]
+2025-03-30 23:49:47,764 - Robot 0 assigned task to vertex 5
+2025-03-30 23:49:47,765 - Robot 0 assigned task to 5 with path [8, 12, 7, 6, 11, 5]
+2025-03-30 23:49:47,794 - Robot 0 moving on edge (8, 12)
+2025-03-30 23:49:47,874 - Robot 0 waiting for edge (8, 12)
+2025-03-30 23:49:47,875 - Robot 0 waiting at vertex 8
+2025-03-30 23:49:48,281 - Robot 1 spawned at vertex 5
+2025-03-30 23:49:50,288 - Robot 1 assigned task to vertex 5
+2025-03-30 23:49:50,289 - Robot 1 assigned task to 5 with path [5]
+2025-03-30 23:49:50,485 - Robot 1 assigned task to vertex 5
+2025-03-30 23:49:50,486 - Robot 1 assigned task to 5 with path [5]
+2025-03-30 23:49:52,656 - Robot 1 assigned task to vertex 7
+2025-03-30 23:49:52,657 - Robot 1 assigned task to 7 with path [5, 11, 6, 7]
+2025-03-30 23:49:52,684 - Robot 1 moving on edge (5, 11)
+2025-03-30 23:49:52,766 - Robot 1 waiting for edge (5, 11)
+2025-03-30 23:49:52,766 - Robot 1 waiting at vertex 5
+2025-03-30 23:49:54,670 - Robot 2 spawned at vertex 0
+2025-03-30 23:49:54,997 - Robot 2 assigned task to vertex 0
+2025-03-30 23:49:54,997 - Robot 2 assigned task to 0 with path [0]
+2025-03-30 23:49:55,619 - Robot 2 assigned task to vertex 0
+2025-03-30 23:49:55,619 - Robot 2 assigned task to 0 with path [0]
+2025-03-30 23:51:51,587 - Loaded graph with 14 vertices and 14 edges
+2025-03-30 23:52:20,899 - Robot 0 spawned at vertex 8
+2025-03-30 23:52:28,157 - Robot 0 assigned task to vertex 8
+2025-03-30 23:52:28,158 - Robot 0 assigned task to 8 with path [8]
+2025-03-30 23:52:28,941 - Robot 0 assigned task to vertex 8
+2025-03-30 23:52:28,943 - Robot 0 assigned task to 8 with path [8]
+2025-03-30 23:52:29,676 - Robot 0 assigned task to vertex 8
+2025-03-30 23:52:29,677 - Robot 0 assigned task to 8 with path [8]
+2025-03-30 23:52:30,208 - Robot 0 assigned task to vertex 8
+2025-03-30 23:52:30,210 - Robot 0 assigned task to 8 with path [8]
+2025-03-30 23:52:30,491 - Robot 0 assigned task to vertex 8
+2025-03-30 23:52:30,491 - Robot 0 assigned task to 8 with path [8]
+2025-03-30 23:52:32,909 - Robot 0 assigned task to vertex 6
+2025-03-30 23:52:32,910 - Robot 0 assigned task to 6 with path [8, 12, 7, 6]
+2025-03-30 23:52:32,959 - Robot 0 moving on edge (8, 12)
+2025-03-30 23:52:33,039 - Robot 0 waiting for edge (8, 12)
+2025-03-30 23:52:33,040 - Robot 0 waiting at vertex 8
+2025-03-30 23:52:33,530 - Robot 1 spawned at vertex 6
+2025-03-30 23:52:34,437 - Robot 1 assigned task to vertex 6
+2025-03-30 23:52:34,437 - Robot 1 assigned task to 6 with path [6]
+2025-03-30 23:52:34,992 - Robot 1 assigned task to vertex 6
+2025-03-30 23:52:34,992 - Robot 1 assigned task to 6 with path [6]
